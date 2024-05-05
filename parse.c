@@ -61,8 +61,12 @@ int is_it_valid_arg(char *s)
     {
         while (s[i] && ((s[i] <= 57 && s[i] >= 48) || s[i] == 45 || s[i] == 43 || s[i] == 32))
         {
-            if ((s[i] == 43 || s[i] == 45) && (s[i + 1] <= 48 || s[i + 1] >=  57))
-                return (0);
+            if ((s[i] == 43 || s[i] == 45) && (s[i + 1] < 48 || s[i + 1] >  57))
+            {
+                printf(">>incalid char >%c\n", s[i]);
+                return(0);
+                // break;
+            }
             i++;
         }
         if (i == ft_strlen(s))
@@ -71,51 +75,53 @@ int is_it_valid_arg(char *s)
     return(0);
 }
 
-int  fill_stack_a(char **s, int *stack_a)
+int  fill_stack_a(char **s, int *stack_a, int slen)
 {
     int i;
-    int slen;
+    // int slen;
 
     i = 0;
-    slen = 0;
-    while(s[slen])
-        slen++;
-    slen -- ;
-    while(slen > 0)
+    // slen = 0;
+    // while(s[slen])
+    //     slen++;
+    // slen--;
+    printf("SLEN DZAAB %d\n", slen);
+    while(slen-- > 0)
     {
         stack_a[i] = atoi(s[slen]);
         printf("stack_a>>%d,  av>>%s<<\n",stack_a[i], s[slen]);
         i++;
-        slen --;
+        // slen --;
     }
     return(i);
 }
 
-int *parse_nd_fill(int ac, char **av)
-{
-    int stack_len;
-    char *arg_str;
-    int *stack_a;
-    char **args_sep;
+// int *parse_nd_fill(int ac, char **av)
+// {
+//     int stack_len;
+//     char *arg_str;
+//     int *stack_a;
+//     char **args_sep;
 
 
-    stack_a = NULL;
-    arg_str = args_tg(av, ac);
-    stack_len = count_nbrs_str(arg_str);
-    if (is_it_valid_arg(arg_str) == 1)
-    {
-        args_sep = split_nbr(arg_str);
-        stack_a = (int *)malloc(sizeof(int) * stack_len);
-        if (NULL == stack_a)
-            return (0);
-        fill_stack_a(args_sep, stack_a);
-    }
-    return(stack_a);
-}
+//     stack_a = NULL;
+//     arg_str = args_tg(av, ac);
+//     stack_len = count_nbrs_str(arg_str);
+//     if (is_it_valid_arg(arg_str) == 1)
+//     {
+//         args_sep = split_nbr(arg_str);
+//         stack_a = (int *)malloc(sizeof(int) * stack_len);
+//         if (NULL == stack_a)
+//             return (0);
+//         fill_stack_a(args_sep, stack_a);
+//     }
+//     return(stack_a);
+// }
 
 int main( int ac , char **av)
 {
-    int *stack_a;
+    char **s;
+    // int *stack_a;
     int i , size_a;
     char *arg_str;
 
@@ -123,11 +129,24 @@ int main( int ac , char **av)
     if (ac > 1)
     {
         arg_str = args_tg(av, ac);
+        printf("argstr>>%s\n", arg_str);
+        printf("nbr >>%d\n", count_nbrs_str(arg_str));
+        size_a =    count_nbrs_str(arg_str);
        
+        
         if (is_it_valid_arg(arg_str) == 1)
         {
-             stack_a = parse_nd_fill(ac, av);
-             size_a =    count_nbrs_str(arg_str);
+            s = split_nbr(arg_str);
+            while (s[i])
+            {
+                printf(">>%s\n", s[i]);
+                i++;
+            }
+             
+            //  stack_a = parse_nd_fill(ac, av);
+             
+            int stack_a[size_a];
+            fill_stack_a(s, stack_a, size_a);
             if (is_dub(stack_a, size_a) == 1)
             {
                 size_a--;

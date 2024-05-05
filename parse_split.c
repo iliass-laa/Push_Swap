@@ -10,7 +10,7 @@ int count_nbrs_str(char *s)
     {
         while (s[i])
         {
-            if ((s[i] >= 48 && s[i] <= 57) && (s[i + 1] == 32 || s[i + 1] == 0))
+            if ((s[i] >= 48 && s[i] <= 57) && (s[i + 1] < 48 || s[i + 1] > 57))
                 res ++;
             i++;
         }
@@ -45,7 +45,7 @@ int find_start(char *s, int i)
 {
     while (s[i])
     {
-        if (s[i] && ((s[i] >= 48 && s[i] <= 57) || s[i] == 45 || s[i] == 43 ))
+        if ((s[i] >= 48 && s[i] <= 57) || ((s[i] == 45 || s[i] == 43 ) && (s[i + 1] >= 48 && s[i + 1] <= 57)))
             return(i);
         i++;
     }
@@ -54,7 +54,7 @@ int find_start(char *s, int i)
 
 int find_end(char *s, int i)
 { 
-    while (s[i] && ((s[i] >= 48 && s[i] <= 57) || s[i] == 45  || s[i] == 43 ))
+    while (s[i] && ((s[i] >= 48 && s[i] <= 57) || ((s[i] == 45 || s[i] == 43 ) && (s[i + 1] >= 48 && s[i + 1] <= 57)) ))
         i++;
     return(i);
 }
@@ -80,6 +80,6 @@ char **split_nbr(char *s)
         res[i] = ft_strdup(s, start, (end - start));
         i++;
     }
-    res[i] = 0;
+    res[i] = NULL;
     return(free(s), res);
 }
