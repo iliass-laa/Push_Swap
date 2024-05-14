@@ -38,6 +38,6 @@ int is_it_sorted(int *stack, int size)
 
 // int main()
 // {
-//     int stack[6] = {99, 54, 3,2 ,1, 96 };
-//     printf("%d, %d\n", jibsghira(stack, 5), stack[5]);
-// }
+//     int stack[6] = {70 ,64, 53,44 ,35, 26 };
+//     printf("%d, %d\n", is_it_sorted(stack, 6), stack[5]);
+// } 

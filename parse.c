@@ -1,5 +1,7 @@
 #include "push_swap.h"
 
+static int stack_len;
+
 int ft_strlen(char *s)
 {
     int i = 0;
@@ -78,84 +80,129 @@ int is_it_valid_arg(char *s)
 int  fill_stack_a(char **s, int *stack_a, int slen)
 {
     int i;
-    // int slen;
 
     i = 0;
-    // slen = 0;
-    // while(s[slen])
-    //     slen++;
-    // slen--;
-    printf("SLEN DZAAB %d\n", slen);
     while(slen-- > 0)
     {
-        stack_a[i] = atoi(s[slen]);
-        printf("stack_a>>%d,  av>>%s<<\n",stack_a[i], s[slen]);
-        i++;
-        // slen --;
-    }
-    return(i);
+        stack_a[i ++] = atoi(s[slen]);
+        free(s[slen]);
+    } 
+    return(free(s), i);
 }
 
-// int *parse_nd_fill(int ac, char **av)
+int *parse_nd_fill(int ac, char **av)
+{
+    // int stack_len;
+    char *arg_str;
+    int *stack_a;
+    char **args_sep;
+
+
+    stack_a = NULL;
+    arg_str = args_tg(av, ac);
+    stack_len = count_nbrs_str(arg_str);
+    if (is_it_valid_arg(arg_str) == 1)
+    {
+        args_sep = split_nbr(arg_str);
+        stack_a = (int *)malloc(sizeof(int) * stack_len);
+        if (NULL == stack_a)
+            return (0);
+        fill_stack_a(args_sep, stack_a, stack_len);
+    }
+    return(stack_a);
+}
+
+// int main( int ac , char **av)
 // {
-//     int stack_len;
+//     char **s;
+//     // int *stack_a;
+//     int i , size_a, size_b, size;
 //     char *arg_str;
-//     int *stack_a;
-//     char **args_sep;
 
-
-//     stack_a = NULL;
-//     arg_str = args_tg(av, ac);
-//     stack_len = count_nbrs_str(arg_str);
-//     if (is_it_valid_arg(arg_str) == 1)
+//     i = 0;
+//     if (ac > 1)
 //     {
-//         args_sep = split_nbr(arg_str);
-//         stack_a = (int *)malloc(sizeof(int) * stack_len);
-//         if (NULL == stack_a)
-//             return (0);
-//         fill_stack_a(args_sep, stack_a);
+//         arg_str = args_tg(av, ac);
+//         size_a =    count_nbrs_str(arg_str);
+//         size = size_a;
+//         size_b = 0;
+//         if (is_it_valid_arg(arg_str) == 1)
+//         {
+//             s = split_nbr(arg_str);
+//             int stack_a[size_a];
+//             int stack_b[size_b];
+//             int tmp[size_a];
+//             fill_stack_a(s, stack_a, size_a);
+//             // sort_tmp(stack_a, tmp, size);
+//             if (is_dub(stack_a, size_a) == 1)
+//             {
+//                 // size_a--;
+//                 // while (size_a >= 0)
+//                 //     printf("%d\n", tmp[size_a--]);
+//                 // printf("sorted_index>>%d\n", get_index_sort(-6, tmp, size));
+//                 // printf("size_a >>%d\n", size_a);
+
+//                 // ra(stack_a, size_a );
+//                // pb(stack_a, stack_b, &size_a, &size_b); 
+//                 // pb(stack_a, stack_b, &size_a, &size_b);
+//                 // pb(stack_a, stack_b, &size_a, &size_b);
+//                 // pb(stack_a, stack_b, &size_a, &size_b);
+
+//                 // a_to_b(stack_a, stack_b, &size_a, &size_b);
+//                 // // printf("size_b>>%d\n", size_b);
+//                 // size_b= 4;
+//                 while (size_b-- > 0)
+//                     printf("stack_b>%d,\n", stack_b[size_b]);
+//                 printf("-----------\n");
+//                 printf("size_a >>%d\n", size_a);
+
+//                 while (size_a-- > 0)
+//                     printf("stack_a> %d\n", stack_a[size_a]);
+//             }
+//         }
+//         else
+//             printf("Error invalid args!\n");
 //     }
-//     return(stack_a);
 // }
 
-int main( int ac , char **av)
-{
-    char **s;
-    // int *stack_a;
-    int i , size_a;
-    char *arg_str;
 
-    i = 0;
+/*----main for dynamic array-----*/
+
+int main(int ac, char **av)
+{
+    int *a = NULL;
+    int *b = NULL;
+    int size_a, i, x,j;
+
     if (ac > 1)
     {
-        arg_str = args_tg(av, ac);
-        printf("argstr>>%s\n", arg_str);
-        printf("nbr >>%d\n", count_nbrs_str(arg_str));
-        size_a =    count_nbrs_str(arg_str);
-       
+        a = parse_nd_fill(ac, av);
+        i = stack_len;
+        x = i;
+        j = 0;
+        // printf(">>>%d\n", i);
         
-        if (is_it_valid_arg(arg_str) == 1)
-        {
-            s = split_nbr(arg_str);
-            while (s[i])
-            {
-                printf(">>%s\n", s[i]);
-                i++;
-            }
-             
-            //  stack_a = parse_nd_fill(ac, av);
-             
-            int stack_a[size_a];
-            fill_stack_a(s, stack_a, size_a);
-            if (is_dub(stack_a, size_a) == 1)
-            {
-                size_a--;
-                while (size_a >= 0)
-                    printf("%d\n", stack_a[size_a--]);
-            }
-            
-        }
-        else
-            printf("Error invalid args!\n");
+        // while(x-- > 0)
+        //     printf(">>%d\n", a[x]);
+        // x = i;
+        algo_nd_stuff(&a, &b, &i, &j);
+        
+        // while(j -- > 0)
+        // {
+        //     printf("stack_b[%d]>>%d\n", j, stack_b[j]);
+        // }
+        // printf("===============\n");
+        // while(i -- > 0)
+        //     printf("stack_a[%d]>>%d\n", i, stack_a[i]);
+        // x = i;
+        
+        // printf("=%d==============\n", get_bigone_index(stack_b, 0));
+        // rra(&stack_a, x);
+        // while(x -- > 0)
+        //     printf("stack_a[%d]>>%d\n", x, stack_a[x]);
+        // x = i;
+
+        // free(stack_a);
+        // free(stack_b);
     }
 }

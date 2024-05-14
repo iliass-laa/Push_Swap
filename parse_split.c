@@ -30,7 +30,7 @@ char    *ft_strdup(char *s, int start, int len)
     slen = ft_strlen(s);
     if (start + len >= slen)
         reslen = slen - start;
-    if (start == slen)
+    if (start >= slen)
         return(NULL);
     res = (char *)malloc(reslen + 1);
     if (!res)

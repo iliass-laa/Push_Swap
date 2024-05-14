@@ -1,5 +1,5 @@
 CC = cc
-CFILES = parse_split.c parse.c push_swap.c utils1.c utils2.c helper.c
+CFILES = helper.c algo.c parse_split.c parse.c push_swap.c utils1.c utils2.c
 OBJ = $(CFILES:.c=.o)
 NAME = push_swap
 

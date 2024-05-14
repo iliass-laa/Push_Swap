@@ -40,9 +40,9 @@ void    ss(int *stack_a , int *stack_b , int size_a, int size_b)
 int    ra(int	*stack_a, int size_a)
 {
     int s;
-    int i = size_a;
+    int i = size_a - 1;
     s = stack_a[i];
-    if (i > 0)
+    if (i >= 0)
     {
         while (i > 0)
         {
@@ -61,9 +61,9 @@ int    ra(int	*stack_a, int size_a)
 void    rb(int	*stack_b, int size_b)
 {
     int s;
-    int i = size_b;
+    int i = size_b - 1;
     s = stack_b[i];
-    if (i > 0)
+    if (i >= 0)
     {
          while (i > 0)
         {
@@ -73,8 +73,6 @@ void    rb(int	*stack_b, int size_b)
         stack_b[i] = s;
         write(1, "rb\n", 3);
     }
-    // else
-    //     printf("u need at least two elements in the stack !\n");
 }
 
 void    rr(int	*stack_a, int *stack_b, int size_a, int size_b)
