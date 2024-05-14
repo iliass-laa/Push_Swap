@@ -68,10 +68,10 @@ void a_to_b(int **stack_a, int **stack_b, int *size_a, int *size_b)
     start = 0;
     if (*size_a < 40 && *size_a > 10)
         max = 7;
-    if(*size_a < 100 && *size_a >= 40)
+    if(*size_a <= 100 && *size_a >= 40)
         max = 15;
-    else if (*size_a >= 100)
-        max = 30;
+    else if (*size_a > 100)
+        max = 28;
     else
         max = 3;
 

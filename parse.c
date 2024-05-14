@@ -180,29 +180,8 @@ int main(int ac, char **av)
         i = stack_len;
         x = i;
         j = 0;
-        // printf(">>>%d\n", i);
-        
-        // while(x-- > 0)
-        //     printf(">>%d\n", a[x]);
-        // x = i;
         algo_nd_stuff(&a, &b, &i, &j);
-        
-        // while(j -- > 0)
-        // {
-        //     printf("stack_b[%d]>>%d\n", j, stack_b[j]);
-        // }
-        // printf("===============\n");
-        // while(i -- > 0)
-        //     printf("stack_a[%d]>>%d\n", i, stack_a[i]);
-        // x = i;
-        
-        // printf("=%d==============\n", get_bigone_index(stack_b, 0));
-        // rra(&stack_a, x);
-        // while(x -- > 0)
-        //     printf("stack_a[%d]>>%d\n", x, stack_a[x]);
-        // x = i;
-
-        // free(stack_a);
-        // free(stack_b);
+        free(a);
+        // free(b);
     }
 }
