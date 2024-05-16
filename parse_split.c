@@ -59,6 +59,14 @@ int find_end(char *s, int i)
     return(i);
 }
 
+void freedom(char *s, char **res, int i)
+{
+    free(s);
+    while (i-->0)
+        free(res[i]);
+    free(res);
+}
+
 char **split_nbr(char *s)
 { 
     int i;
@@ -78,8 +86,16 @@ char **split_nbr(char *s)
         start =  find_start(s, end);
         end = find_end(s, start);          
         res[i] = ft_strdup(s, start, (end - start));
+        if (res[i] == NULL)
+            return(freedom(s, res, i), NULL);
         i++;
     }
     res[i] = NULL;
     return(free(s), res);
+}
+
+void sort_two(int *stack_a)
+{
+    if (is_it_sorted(stack_a, 2) == -1)
+        sa(stack_a, 2);
 }

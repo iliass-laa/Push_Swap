@@ -83,7 +83,7 @@
 //     }
 // }
 
-int     pb(int **stack_a, int **stack_b, int *size_a, int *size_b)
+void     pb(int **stack_a, int **stack_b, int *size_a, int *size_b)
 {
     int i,j;
     int *new_b;
@@ -109,7 +109,7 @@ int     pb(int **stack_a, int **stack_b, int *size_a, int *size_b)
     }
 }
 
-int     pa(int **stack_a, int **stack_b, int *size_a, int *size_b)
+void     pa(int **stack_a, int **stack_b, int *size_a, int *size_b)
 {
     int i,j;
     int *new_a;
@@ -188,7 +188,6 @@ void    rrb(int **stack_b, int size_b)
         }
         (*stack_b)[size_b - 1] = chber;
         write(1, "rrb\n", 4);
-
     }
 }
 
