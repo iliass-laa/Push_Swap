@@ -59,7 +59,7 @@ int	find_start(char *s, int i)
 	while (s[i])
 	{
 		if ((s[i] >= 48 && s[i] <= 57) || ((s[i] == 45 || s[i] == 43) && (s[i
-					+ 1] >= 48 && s[i + 1] <= 57)))
+						+ 1] >= 48 && s[i + 1] <= 57)))
 			return (i);
 		i++;
 	}

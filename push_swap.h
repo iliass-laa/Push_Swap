@@ -13,9 +13,17 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
+typedef struct s_stacks
+{
+	int	*a;
+	int	*b;
+	int	i;
+	int	j;
+}		t_stacks;
 typedef struct s_tap
 {
 	int	size;
@@ -23,7 +31,7 @@ typedef struct s_tap
 	int	max;
 	int	index_sorted;
 	int	*stack_tmp;
-} t_tap;
+}		t_tap;
 
 int		ft_strlen(char *s);
 char	*ft_strjoin_space(char *s1, char *s2);
@@ -56,9 +64,13 @@ int		is_dub(int *stack_a, int size);
 int		jibsghira(int *stack_a, int size_a);
 void	sort_tmp(int *stack_a, int *stack_tmp, int size);
 int		get_index_sort(int nbr, int *stack_tmp, int size);
-void	a_to_b(int **stack_a, int **stack_b, int *size_a, int *size_b);
-void	a_to_b_season_two(int **stack_a, int **stack_b, int *size_a, int *size_b, t_tap *x);
-void	algo_nd_stuff(int **stack_a, int **stack_b, int *size_a, int *size_b);
+// void	a_to_b(int **stack_a, int **stack_b, int *size_a, int *size_b);
+void	a_to_b(t_stacks *y);
+// int 	a_to_b(int **stack_a, int **stack_b, int *size_a);
+// int	a_to_b_season_two(int **stack_a, int **stack_b, int *size_a,  t_tap *x);
+void	a_to_b_season_two(t_stacks *y, t_tap *x);
+// void	algo_nd_stuff(int **stack_a, int **stack_b, int *size_a, int *size_b);
+void	algo_nd_stuff(t_stacks *y);
 
 int		*parse_nd_fill(int ac, char **av, int *i);
 void	error_mf(void);

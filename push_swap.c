@@ -93,25 +93,22 @@ int	jibsghira(int *stack_a, int size_a)
 
 int	main(int ac, char **av)
 {
-	int	*a;
-	int	*b;
-	int	i;
-	int	j;
+	t_stacks	y;
 
-	a = NULL;
-	b = NULL;
+	y.a = NULL;
+	y.b = NULL;
 	if (ac > 1)
 	{
-		a = parse_nd_fill(ac, av, &i);
-		if (!a)
+		y.a = parse_nd_fill(ac, av, &(y.i));
+		if (!y.a)
 			error_mf();
-		if (is_dub(a, i) == 0)
+		if (is_dub(y.a, y.i) == 0)
 			error_mf();
-		j = 0;
-		if (i <= 5)
-			treat_small(&a, &b, &i, &j);
+		y.j = 0;
+		if (y.i <= 5)
+			treat_small(&(y.a), &(y.b), &(y.i), &(y.j));
 		else
-			algo_nd_stuff(&a, &b, &i, &j);
-		free(a);
+			algo_nd_stuff(&y);
+		free(y.a);
 	}
 }
