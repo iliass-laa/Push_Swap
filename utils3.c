@@ -85,7 +85,6 @@ int	ft_atoi(const char *str, int *v)
 	long long	res;
 	int			i;
 	int			sign;
-	long long	tmp;
 
 	i = 0;
 	sign = 1;
@@ -95,10 +94,7 @@ int	ft_atoi(const char *str, int *v)
 	if (str[i] == 43 || str[i] == 45)
 		i++;
 	while (str[i] >= 48 && str[i] <= 57)
-	{
-		tmp = res;
 		res = res * 10 + (str[i++] - 48);
-	}
 	res *= sign;
 	if (res < -2147483648 || res > 2147483647)
 		*v = -1;
