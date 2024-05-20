@@ -22,24 +22,20 @@ int	tree_sort(int **a, int **b, int *i, int *j)
 {
 	int	x;
 
-	if (is_it_rev_sorted(*a, 3) == 1)
+	x = jibsghira(*a, 3);
+	if (is_it_rev_sorted(*a, 3) == 1 || (x == 1 && ((*a)[0] > (*a)[2])))
 	{
 		sa(*a, 3);
+		if (x == 1)
+			return (0);
 		rra(a, 3);
 	}
 	else
 	{
-		x = jibsghira(*a, 3);
 		if (x == 0)
-			rra(a, 3);
+			return (rra(a, 3), 0);
 		else if (x == 1)
-		{
-			if ((*a)[0] < (*a)[2])
-				ra(*a, 3);
-			else
-				sa(*a, 3);
-			return (0);
-		}
+			return (ra(*a, 3), 0);
 		pb(a, b, i, j);
 		sort_two(*a);
 		pa(a, b, i, j);

@@ -103,7 +103,10 @@ int	main(int ac, char **av)
 		if (!y.a)
 			error_mf();
 		if (is_dub(y.a, y.i) == 0)
+		{
+			free(y.a);
 			error_mf();
+		}
 		y.j = 0;
 		if (y.i <= 5)
 			treat_small(&(y.a), &(y.b), &(y.i), &(y.j));

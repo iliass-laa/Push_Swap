@@ -36,7 +36,7 @@ char	*args_tg(char **av, int n_arg)
 	while (i < n_arg)
 	{
 		if (is_there_a_num(av[i]) == 0)
-			return (NULL);
+			return (free(res), NULL);
 		res = ft_strjoin_space(res, av[i++]);
 	}
 	return (res);
@@ -97,13 +97,15 @@ int	*parse_nd_fill(int ac, char **av, int *i)
 	arg_str = args_tg(av, ac);
 	*i = count_nbrs_str(arg_str);
 	if (is_it_valid_arg(arg_str) != 1)
-		return (NULL);
+		return (free(arg_str), NULL);
 	args_sep = split_nbr(arg_str);
+	if (!args_sep)
+		return (NULL);
 	stack_a = (int *)malloc(sizeof(int) * (*i));
 	if (NULL == stack_a)
 		return (NULL);
 	fill_stack_a(args_sep, stack_a, *i, &v);
 	if (v == -1)
-		return (NULL);
+		return (free(stack_a), NULL);
 	return (stack_a);
 }
